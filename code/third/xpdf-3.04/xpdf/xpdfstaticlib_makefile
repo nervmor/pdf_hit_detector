@@ -1,0 +1,196 @@
+#========================================================================
+#
+# Xpdf Makefile
+#
+# Copyright 1996-2003 Glyph & Cog, LLC
+#
+#========================================================================
+
+SHELL = /bin/sh
+
+prefix = /usr/local
+srcdir = .
+
+
+GOOSRCDIR = $(srcdir)/../goo
+GOOLIBDIR = ../goo
+FOFISRCDIR = $(srcdir)/../fofi
+FOFILIBDIR = ../fofi
+SPLASHSRCDIR = $(srcdir)/../splash
+SPLASHLIBDIR = ../splash
+
+CXXFLAGS = -g -O2 -DHAVE_CONFIG_H -I.. -I$(srcdir)/.. -I$(GOOSRCDIR) -I$(FOFISRCDIR) -I$(SPLASHSRCDIR) -I$(srcdir)           
+
+LDFLAGS = 
+
+FTLIBS =  -lz
+
+XLIBS =         -lX11 
+
+PNGLIBS = -lpng
+
+SPLASHLIBS = -L$(SPLASHLIBDIR) -lsplash
+
+OTHERLIBS =    \
+	-L$(FOFILIBDIR) -lfofi \
+	-L$(GOOLIBDIR) -lGoo
+
+CXX = g++
+
+LIBPREFIX = lib
+EXE = 
+
+#------------------------------------------------------------------------
+
+.SUFFIXES: .cc
+
+.cc.o:
+	$(CXX) $(CXXFLAGS) -c $<
+
+#------------------------------------------------------------------------
+
+CXX_SRC = \
+	$(srcdir)/AcroForm.cc \
+	$(srcdir)/Annot.cc \
+	$(srcdir)/Array.cc \
+	$(srcdir)/BuiltinFont.cc \
+	$(srcdir)/BuiltinFontTables.cc \
+	$(srcdir)/CMap.cc \
+	$(srcdir)/Catalog.cc \
+	$(srcdir)/CharCodeToUnicode.cc \
+	$(srcdir)/CoreOutputDev.cc \
+	$(srcdir)/Decrypt.cc \
+	$(srcdir)/Dict.cc \
+	$(srcdir)/Error.cc \
+	$(srcdir)/FontEncodingTables.cc \
+	$(srcdir)/Form.cc \
+	$(srcdir)/Function.cc \
+	$(srcdir)/Gfx.cc \
+	$(srcdir)/GfxFont.cc \
+	$(srcdir)/GfxState.cc \
+	$(srcdir)/GlobalParams.cc \
+	$(srcdir)/HTMLGen.cc \
+	$(srcdir)/ImageOutputDev.cc \
+	$(srcdir)/JArithmeticDecoder.cc \
+	$(srcdir)/JBIG2Stream.cc \
+	$(srcdir)/JPXStream.cc \
+	$(srcdir)/Lexer.cc \
+	$(srcdir)/Link.cc \
+	$(srcdir)/NameToCharCode.cc \
+	$(srcdir)/Object.cc \
+	$(srcdir)/OptionalContent.cc \
+	$(srcdir)/Outline.cc \
+	$(srcdir)/OutputDev.cc \
+	$(srcdir)/PDFCore.cc \
+	$(srcdir)/PDFDoc.cc \
+	$(srcdir)/PDFDocEncoding.cc \
+	$(srcdir)/PSOutputDev.cc \
+	$(srcdir)/PSTokenizer.cc \
+	$(srcdir)/Page.cc \
+	$(srcdir)/Parser.cc \
+	$(srcdir)/PreScanOutputDev.cc \
+	$(srcdir)/SecurityHandler.cc \
+	$(srcdir)/SplashOutputDev.cc \
+	$(srcdir)/Stream.cc \
+	$(srcdir)/TextOutputDev.cc \
+	$(srcdir)/TextString.cc \
+	$(srcdir)/UnicodeMap.cc \
+	$(srcdir)/UnicodeTypeTable.cc \
+	$(srcdir)/XFAForm.cc \
+	$(srcdir)/XPDFApp.cc \
+	$(srcdir)/XPDFCore.cc \
+	$(srcdir)/XPDFTree.cc \
+	$(srcdir)/XPDFViewer.cc \
+	$(srcdir)/XpdfPluginAPI.cc \
+	$(srcdir)/XRef.cc \
+	$(srcdir)/Zoox.cc \
+	$(srcdir)/pdftops.cc \
+	$(srcdir)/pdftotext.cc \
+	$(srcdir)/pdftohtml.cc \
+	$(srcdir)/pdfinfo.cc \
+	$(srcdir)/pdffonts.cc \
+	$(srcdir)/pdfdetach.cc \
+	$(srcdir)/pdftoppm.cc \
+	$(srcdir)/pdftopng.cc \
+	$(srcdir)/pdfimages.cc \
+	$(srcdir)/xpdf.cc
+
+#------------------------------------------------------------------------
+
+all: libxpdfstaticlib.a
+
+all-no-x: libxpdfstaticlib.a
+
+#------------------------------------------------------------------------
+
+PDFSTATICLIB_OBJS = \
+	AcroForm.o \
+	Annot.o \
+	Array.o \
+	BuiltinFont.o \
+	BuiltinFontTables.o \
+	Catalog.o \
+	CharCodeToUnicode.o \
+	CMap.o \
+	Decrypt.o \
+	Dict.o \
+	Error.o \
+	FontEncodingTables.o \
+	Form.o \
+	Function.o \
+	Gfx.o \
+	GfxFont.o \
+	GfxState.o \
+	GlobalParams.o \
+	JArithmeticDecoder.o \
+	JBIG2Stream.o \
+	JPXStream.o \
+	Lexer.o \
+	Link.o \
+	NameToCharCode.o \
+	Object.o \
+	OptionalContent.o \
+	Outline.o \
+	OutputDev.o \
+	Page.o \
+	Parser.o \
+	PDFDoc.o \
+	PDFDocEncoding.o \
+	PSTokenizer.o \
+	SecurityHandler.o \
+	Stream.o \
+	TextOutputDev.o \
+	TextString.o \
+	UnicodeMap.o \
+	UnicodeTypeTable.o \
+	XFAForm.o \
+	XpdfPluginAPI.o \
+	XRef.o \
+	Zoox.o 
+PDFSTATICLIB_LIBS = -L$(GOOLIBDIR) -lGoo $(OTHERLIBS) -lm
+
+libxpdfstaticlib.a: $(PDFSTATICLIB_OBJS) $(GOOLIBDIR)/$(LIBPREFIX)Goo.a
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(PDFSTATICLIB_OBJS) \
+		$(PDFSTATICLIB_LIBS) -c
+
+	cp -f $(GOOLIBDIR)/$(LIBPREFIX)Goo.a libGoo.a
+	cp -f $(FOFILIBDIR)/$(LIBPREFIX)fofi.a libfofi.a
+	cp -f $(SPLASHLIBDIR)/$(LIBPREFIX)splash.a libsplash.a
+	ar x libGoo.a 
+	ar x libfofi.a
+	ar x libsplash.a
+	ar -rcs $@ *.o
+
+#------------------------------------------------------------------------
+
+
+clean:
+	-rm *.o
+	-rm *.a
+
+#------------------------------------------------------------------------
+
+depend:
+	$(CXX) $(CXXFLAGS) -MM $(CXX_SRC) >Makefile.dep
+
+-include Makefile.dep

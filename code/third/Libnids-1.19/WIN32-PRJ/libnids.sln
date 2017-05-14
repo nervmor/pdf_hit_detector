@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libnids", "libnids.vcproj", "{4CE76960-B2EC-4231-8107-03B7F6B5963E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "overflows", "overflows.vcproj", "{BE7AB89B-7D36-4E79-A4DC-E7DAB35FE679}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E} = {4CE76960-B2EC-4231-8107-03B7F6B5963E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "printall", "printall.vcproj", "{701D8855-E030-4276-893C-55C7FE328843}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E} = {4CE76960-B2EC-4231-8107-03B7F6B5963E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sniff", "sniff.vcproj", "{DEAB3523-9201-481F-94B8-B6966F9BD1F2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E} = {4CE76960-B2EC-4231-8107-03B7F6B5963E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Debug|Win32.Build.0 = Debug|Win32
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Release|Win32.ActiveCfg = Release|Win32
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Release|Win32.Build.0 = Release|Win32
+		{BE7AB89B-7D36-4E79-A4DC-E7DAB35FE679}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE7AB89B-7D36-4E79-A4DC-E7DAB35FE679}.Debug|Win32.Build.0 = Debug|Win32
+		{BE7AB89B-7D36-4E79-A4DC-E7DAB35FE679}.Release|Win32.ActiveCfg = Release|Win32
+		{BE7AB89B-7D36-4E79-A4DC-E7DAB35FE679}.Release|Win32.Build.0 = Release|Win32
+		{701D8855-E030-4276-893C-55C7FE328843}.Debug|Win32.ActiveCfg = Debug|Win32
+		{701D8855-E030-4276-893C-55C7FE328843}.Debug|Win32.Build.0 = Debug|Win32
+		{701D8855-E030-4276-893C-55C7FE328843}.Release|Win32.ActiveCfg = Release|Win32
+		{701D8855-E030-4276-893C-55C7FE328843}.Release|Win32.Build.0 = Release|Win32
+		{DEAB3523-9201-481F-94B8-B6966F9BD1F2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DEAB3523-9201-481F-94B8-B6966F9BD1F2}.Debug|Win32.Build.0 = Debug|Win32
+		{DEAB3523-9201-481F-94B8-B6966F9BD1F2}.Release|Win32.ActiveCfg = Release|Win32
+		{DEAB3523-9201-481F-94B8-B6966F9BD1F2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

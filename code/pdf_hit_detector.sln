@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libnids", "third\Libnids-1.19\WIN32-PRJ\libnids.vcproj", "{4CE76960-B2EC-4231-8107-03B7F6B5963E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xpdf_lib", "third\xpdf-3.04\winbuild\xpdf_lib.vcproj", "{BCAB0DC6-5F75-4B1A-9097-52A6B0854221}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pdf_hit_detector", "pdf_hit_detector\pdf_hit_detector.vcproj", "{F4D8AF11-3B65-420C-A63C-2C46093B7C3A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4189F8B8-1B37-42E9-9473-D16525204763} = {4189F8B8-1B37-42E9-9473-D16525204763}
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E} = {4CE76960-B2EC-4231-8107-03B7F6B5963E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pdf_extract_match_lib", "pdf_extract_match_lib\pdf_extract_match_lib.vcproj", "{4189F8B8-1B37-42E9-9473-D16525204763}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BCAB0DC6-5F75-4B1A-9097-52A6B0854221} = {BCAB0DC6-5F75-4B1A-9097-52A6B0854221}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Debug|Win32.Build.0 = Debug|Win32
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Release|Win32.ActiveCfg = Release|Win32
+		{4CE76960-B2EC-4231-8107-03B7F6B5963E}.Release|Win32.Build.0 = Release|Win32
+		{BCAB0DC6-5F75-4B1A-9097-52A6B0854221}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BCAB0DC6-5F75-4B1A-9097-52A6B0854221}.Debug|Win32.Build.0 = Debug|Win32
+		{BCAB0DC6-5F75-4B1A-9097-52A6B0854221}.Release|Win32.ActiveCfg = Release|Win32
+		{BCAB0DC6-5F75-4B1A-9097-52A6B0854221}.Release|Win32.Build.0 = Release|Win32
+		{F4D8AF11-3B65-420C-A63C-2C46093B7C3A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F4D8AF11-3B65-420C-A63C-2C46093B7C3A}.Debug|Win32.Build.0 = Debug|Win32
+		{F4D8AF11-3B65-420C-A63C-2C46093B7C3A}.Release|Win32.ActiveCfg = Release|Win32
+		{F4D8AF11-3B65-420C-A63C-2C46093B7C3A}.Release|Win32.Build.0 = Release|Win32
+		{4189F8B8-1B37-42E9-9473-D16525204763}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4189F8B8-1B37-42E9-9473-D16525204763}.Debug|Win32.Build.0 = Debug|Win32
+		{4189F8B8-1B37-42E9-9473-D16525204763}.Release|Win32.ActiveCfg = Release|Win32
+		{4189F8B8-1B37-42E9-9473-D16525204763}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
