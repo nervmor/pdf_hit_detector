@@ -45,12 +45,19 @@ PDF传输检测项目说明
 * 代码编译说明
 	
 0.	Windows编译环境为VS2005，已经配置好，可一键编译
-Linux环境编译: 
+
+Linux环境编译:
+
 1.需先安装mysql和相关开发包
+
 2.cd到code目录，先make prebuild，然后make即可
+
 1．	第三方库bug修复见《第三方库的配置说明.doc》，项目代码中已经修复
+
 2．	需要编译的第三方库为boost和xpdf
+
 3．	boost库只使用了(date_time thread locale filesystem)，只需编译这些库即可
+
 4．	Xpdf的编译需要freetype库的支持(已经拷贝到xpdf目录)，编译时包含目录中加入freetype的目录。xpdf本身的编译类型是应用程序，本项目把它编译成了静态库以供使用
 
 
